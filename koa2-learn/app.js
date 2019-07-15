@@ -12,6 +12,9 @@ const m1 = require('./middleware/m1')
 const m2 = require('./middleware/m2')
 const m3 = require('./middleware/m3')
 
+const mongoose = require('mongoose')
+const dbConfig = require('./dbs/config')
+
 const index = require('./routes/index')
 const users = require('./routes/users')
 
@@ -46,6 +49,11 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+
+mongoose.connect(dbConfig.dbs,{
+  useNewUrlParser:true
+})
+
 
 // error-handling
 app.on('error', (err, ctx) => {
