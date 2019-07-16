@@ -1,6 +1,10 @@
 const router = require('koa-router')()
 
 const Person = require('../dbs/models/person') //引入数据库模型
+const Redis = require('koa-redis')//引入redis模块
+const Store = new Redis().client //
+
+
 
 router.prefix('/users') //路径前缀
 
@@ -57,6 +61,13 @@ router.post('/removePerson',async function(ctx){
     name: ctx.request.body.name
   }).remove()
   ctx.body = {
+    code:0
+  }
+})
+
+router.get('/fix', async function(ctx){ // 操作redis的接口 
+  const st = await Store.hset('fix','name',Math.random()) //fix为key，name为字段，Math.random()为值
+  ctx.body={
     code:0
   }
 })
