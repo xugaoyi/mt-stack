@@ -146,6 +146,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_koa__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_nuxt__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_nuxt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_nuxt__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__interface_citf__ = __webpack_require__(6);
 
 
 var start = function () {
@@ -180,7 +181,7 @@ var start = function () {
             return builder.build();
 
           case 10:
-
+            app.use(__WEBPACK_IMPORTED_MODULE_3__interface_citf__["a" /* default */].routes()).use(__WEBPACK_IMPORTED_MODULE_3__interface_citf__["a" /* default */].allowedMethods());
             app.use(function (ctx) {
               ctx.status = 200;
               ctx.respond = false; // Mark request as handled for Koa
@@ -191,7 +192,7 @@ var start = function () {
             app.listen(port, host);
             console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
 
-          case 13:
+          case 14:
           case 'end':
             return _context.stop();
         }
@@ -209,7 +210,60 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 
 
+
 start();
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_E_node_mt_stack_nuxt_learn_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_E_node_mt_stack_nuxt_learn_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_E_node_mt_stack_nuxt_learn_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa_router__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_koa_router__);
+
+
+var _this = this;
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+
+
+var router = new __WEBPACK_IMPORTED_MODULE_1_koa_router___default.a({
+  prefix: '/city'
+});
+
+router.get('/list', function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_E_node_mt_stack_nuxt_learn_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx) {
+    return __WEBPACK_IMPORTED_MODULE_0_E_node_mt_stack_nuxt_learn_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            ctx.body = {
+              'list': ['北京', '天津']
+            };
+
+          case 1:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, _this);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+}());
+
+/* harmony default export */ exports["a"] = router;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+module.exports = require("koa-router");
 
 /***/ }
 /******/ ]);
